@@ -4,7 +4,4 @@ media/*.jpg
 media/thumbs/*.gif
 media/thumbs/*.png
 media/thumbs/*.jpg
-media/**/*.gif
-media/**/*.png
-media/**/*.jpg
 manifest.yaml
