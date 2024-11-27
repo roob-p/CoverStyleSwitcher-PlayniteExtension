@@ -7,3 +7,4 @@ media/thumbs/*.jpg
 media/**/*.gif
 media/**/*.png
 media/**/*.jpg
+manifest.yaml
