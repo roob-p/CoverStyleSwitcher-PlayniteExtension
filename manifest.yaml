@@ -1,0 +1,11 @@
+AddonId: CoverStyleSwitcher
+Packages:
+  - Version: 1.0.1
+    RequiredApiVersion: 6.0.0
+    ReleaseDate: 2024-11-27
+    PackageUrl: >-
+      https://github.com/roob-p/CoverStyleSwitcher-PlayniteExtension/releases/download/v1.0.1/CoverStyleSwitcher.pext
+    Changelog:
+      - Initial release
+
+
