@@ -12,7 +12,7 @@ function backup_slot()
 
 $go="true"
 if ($slot -eq "Original"){
-$selection = $PlayniteApi.Dialogs.ShowMessage("Vuoi salvare le cover selezionate?", "MyMessage", [System.Windows.MessageBoxButton]::YesNo)
+$selection = $PlayniteApi.Dialogs.ShowMessage("Do you want to save the selected cover?", "Cover Style Switcher", [System.Windows.MessageBoxButton]::YesNo)
 if ($selection -eq "Yes"){
 	$go="true"
 }
@@ -261,7 +261,7 @@ $PlayniteApi.Database.Games.Update($game)
 	
 	 $nocovergamesU= $nocovergames -join ", "
 	 $nocovergames = $nocovergamesU#.TrimEnd(", ")
-  $PlayniteApi.Dialogs.ShowMessage("Non risultano cover salvate di: "+$nocovergames)
+  $PlayniteApi.Dialogs.ShowMessage("No cover found in this slot for: "+$nocovergames, "Cover Style Switcher")
   }
  
 	
