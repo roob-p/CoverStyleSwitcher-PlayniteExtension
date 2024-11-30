@@ -4,7 +4,7 @@ Packages:
     RequiredApiVersion: 6.0.0
     ReleaseDate: 2024-11-30
     PackageUrl: >-
-      https://github.com/roob-p/CoverStyleSwitcher-PlayniteExtension/releases/download/v1.0.2/CoverStyleSwitcher_v1.0.3.pext
+      https://github.com/roob-p/CoverStyleSwitcher-PlayniteExtension/releases/download/v1.0.3/CoverStyleSwitcher_v1.0.3.pext
     Changelog: |
       - Fixed the bug where new files were added every time a cover was loaded from a slot.
       - In "change with Explorer" selected games are now sorted by name rather than in the order they were selected
