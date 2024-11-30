@@ -38,7 +38,7 @@ $coverPath= "c:\Cover Styles\"
     }
  }
  
- #$currentLanguage= "it"
+ $currentLanguage= "it"
  
   if (!$messages.ContainsKey($currentLanguage)) {
 	 $currentLanguage= "en" 
@@ -188,16 +188,19 @@ if ($gamed -notmatch '[\/\:\*?"<>|]'){
 	 $ext = $ext.Trim().Split(' ')[0]
 	
 
+$PlayniteApi.Database.RemoveFile($gamed.coverImage)
+$gamed.CoverImage = $PlayniteApi.Database.AddFile("$file$ext", $gamed.Id)
+$PlayniteApi.Database.Games.Update($gamed)
 
-$game.CoverImage = $PlayniteApi.Database.AddFile("$file$ext", $game.Id)
-$PlayniteApi.Database.Games.Update($game)
 
    
    
    
 }elseif (Test-Path $file)  {
-$game.CoverImage = $PlayniteApi.Database.AddFile("$file", $game.Id)
-$PlayniteApi.Database.Games.Update($game)
+
+$PlayniteApi.Database.RemoveFile($gamed.coverImage)
+$gamed.CoverImage = $PlayniteApi.Database.AddFile("$file", $gamed.Id)
+$PlayniteApi.Database.Games.Update($gamed)
 } else {  #Non trova cover salvate
 	#$nocovergames+=$game.name + ", "
 	$nocovergames+=$game.name
@@ -222,12 +225,15 @@ $fileIT="$coverPath\Backup\$slot\gameid\$plat\$($game.id).*"
 
 
 
-$game.CoverImage = $PlayniteApi.Database.AddFile("$fileI$extI", $game.Id)
-$PlayniteApi.Database.Games.Update($game)
-	
+
+$PlayniteApi.Database.RemoveFile($gamed.coverImage)
+$gamed.CoverImage = $PlayniteApi.Database.AddFile("$fileI$extI", $gamed.Id)
+$PlayniteApi.Database.Games.Update($gamed)
 }elseif (Test-Path $fileI)  {	
-$game.CoverImage = $PlayniteApi.Database.AddFile("$fileI", $game.Id)
-$PlayniteApi.Database.Games.Update($game)
+$PlayniteApi.Database.RemoveFile($gamed.coverImage)
+$gamed.CoverImage = $PlayniteApi.Database.AddFile("$fileI", $gamed.Id)
+$PlayniteApi.Database.Games.Update($gamed)
+
 } else {  #Non trova cover salvate
 	
 	$nocovergames+=$game.name
@@ -254,12 +260,14 @@ $fileST="$coverPath\Backup\$slot\$source\$game.*"
 
 
 
-$game.CoverImage = $PlayniteApi.Database.AddFile("$fileS$extS", $game.Id)
-$PlayniteApi.Database.Games.Update($game)
 
+$PlayniteApi.Database.RemoveFile($gamed.coverImage)
+$gamed.CoverImage = $PlayniteApi.Database.AddFile("$fileS$extS", $gamed.Id)
+$PlayniteApi.Database.Games.Update($gamed)
 }elseif (Test-Path $fileS)  {
-$game.CoverImage = $PlayniteApi.Database.AddFile("$fileS", $game.Id)
-$PlayniteApi.Database.Games.Update($game)	
+$PlayniteApi.Database.RemoveFile($gamed.coverImage)
+$gamed.CoverImage = $PlayniteApi.Database.AddFile("$fileS", $gamed.Id)
+$PlayniteApi.Database.Games.Update($gamed)	
 } else {
 	#$nocovergames+=$game.name + ", "
 	$nocovergames+=$game.name
@@ -284,14 +292,19 @@ $fileSIT="$coverPath\Backup\$slot\gameid\$source\$($game.id).*"
 
 
 	
-$game.CoverImage = $PlayniteApi.Database.AddFile("$fileSI$extSI", $game.Id)
-$PlayniteApi.Database.Games.Update($game)
+
+$PlayniteApi.Database.RemoveFile($gamed.coverImage)
+$gamed.CoverImage = $PlayniteApi.Database.AddFile("$fileSI$extSI", $gamed.Id)
+$PlayniteApi.Database.Games.Update($gamed)
 
 	$ou="$($game.id)$extSI"
 
  }elseif (Test-Path $fileSI)  {
-$game.CoverImage = $PlayniteApi.Database.AddFile("$fileSI", $game.Id)
-$PlayniteApi.Database.Games.Update($game)
+
+
+$PlayniteApi.Database.RemoveFile($gamed.coverImage)
+$gamed.CoverImage = $PlayniteApi.Database.AddFile("$fileSI", $gamed.Id)
+$PlayniteApi.Database.Games.Update($gamed)
  }else{
 		
 	#Non trova cover salvate
@@ -332,9 +345,10 @@ function coverchange()
 	)
 	
 $Gamesel = $PlayniteApi.MainView.SelectedGames
-#$orderedGames = $Gamesel | Sort-Object -Property Name
+$orderedGames = $Gamesel | Sort-Object -Property Name
 
-foreach ($Game in $Gamesel) { 
+#foreach ($Game in $Gamesel) { 
+foreach ($Game in $orderedGames) { 
 
 $u=$null
 $cc=$null
@@ -346,13 +360,12 @@ $u=$PlayniteApi.Dialogs.SelectImageFile()
 
 
 
-if (!([string]::IsNullOrWhiteSpace($u))) { $cc = $PlayniteApi.Database.AddFile($u, $game.Id)}
+if (!([string]::IsNullOrWhiteSpace($u))) { $cc = $PlayniteApi.Database.AddFile($u, $gamed.Id)}
 if ($cc -ne $null) {
 	
-	$PlayniteApi.Database.RemoveFile($gamed.id)
-	$gamed.CoverImage = $cc
-	$PlayniteApi.Database.Games.Update($gamed)
-	$PlayniteApi.Database.Games.Update($gamed)
+	$PlayniteApi.Database.RemoveFile($gamed.coverImage)
+	$gamed.CoverImage = $cc                            
+	$PlayniteApi.Database.Games.Update($gamed)   
 
 	}
 
