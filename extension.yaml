@@ -1,7 +1,7 @@
 ﻿Id: CoverStyleSwitcher
 Name: Cover Style Switcher
 Author: roob-p
-Version: 1.0.1
+Version: 1.0.3
 Module: CoverStyleSwitcher.psm1
 Type: Script
 Icon: icon1.png
