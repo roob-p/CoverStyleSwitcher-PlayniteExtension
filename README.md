@@ -38,4 +38,6 @@ If you enjoy the extension, you can buy me a coffee. It will be very appreciated
    <tr>
     <td style="padding: 0; vertical-align: top;">
       <img src="https://github.com/roob-p/CoverStyleSwitcher-PlayniteExtension/blob/main/media/3a.gif" style="width: 100%; height: auto;" />
+         </td>
+  </tr>
 </table>
