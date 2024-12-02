@@ -1,49 +1,81 @@
 
-$coverPath= "c:\Cover Styles\"
+$global:coverPath= "c:\Cover Styles\"
 
 
 
- $currentLanguage=(Get-Culture).Name
+ $global:currentLanguage=(Get-Culture).Name
  
- $messages = @{
+ $global:messages = @{
 	"en" = @{
-        "noSavedCover"  = "No saved cover found for: "
+        	"noSavedCover"  = "No saved cover found for: "
 		"noSavedCovers" = "No saved covers found for: "
 		"SaveOriginal"	= "Do you want to save the selected cover?"
 		"SaveOriginals" = "Do you want to save the selected covers?"
+		"Warning2A"	= "Warning: You have chosen"
+		"Warning2B"	= "covers while there are"
+		"Warning2C"	= "selected games. Do you want to continue?"
+		"Warning1A"	= "Warning: You have chosen only one cover while there are"
+		"Warning1B"	= "selected games. Do you want to continue?"
+
     }
     "it" = @{
 		"noSavedCover"  = "Non risultano cover salvate di: "
-        "noSavedCovers" = "Non risultano cover salvate di: "
+       	        "noSavedCovers" = "Non risultano cover salvate di: "
 		"SaveOriginal"  = "Vuoi salvare la cover selezionate?"
 		"SaveOriginals" = "Vuoi salvare le cover selezionate?"
+		"Warning2A"	= "Attenzione: Hai selezionato"
+		"Warning2B"	= "cover ma ci sono"
+		"Warning2C"	= "giochi selezionati. Vuoi continuare?"
+		"Warning1A" 	= "Attenzione: Hai selezionato solo una cover, ma ci sono"
+		"Warning1B"	= "giochi selezionati. Vuoi continuare?"
+
     }
 	"fr" = @{
-        "noSavedCover"  = "Aucune couverture enregistrée pour: "
+        	"noSavedCover"  = "Aucune couverture enregistrée pour: "
 		"noSavedCovers" = "Aucune couverture enregistrée pour: "
 		"SaveOriginal"  = "Voulez-vous sauvegarder les couverture sélectionnées ?"
 		"SaveOriginals" = "Voulez-vous sauvegarder les couvertures sélectionnées ?"
+		"Warning2A"	= "Attention : vous avez sélectionné"
+		"Warning2B"	= "couvertures, mais il y a"
+		"Warning2C"	= "jeux sélectionnés. Voulez-vous continuer ?"
+		"Warning1A" 	= "Attention : vous avez sélectionné une seule couverture, mais il y a"
+		"Warning1B" 	= "jeux sélectionnés. Voulez-vous continuer?"
+
     }
 	"es" = @{
 		"noSavedCover"  = "No se ha encontrado portada guardada para: "
 		"noSavedCovers" = "No se han encontrado portadas guardadas para: "
 		"SaveOriginal"  = "¿Deseas guardar la portada seleccionada?"
-        "SaveOriginals" = "¿Deseas guardar las portadas seleccionadas?"
+        	"SaveOriginals" = "¿Deseas guardar las portadas seleccionadas?"
+		"Warning2A"	= "Advertencia: has seleccionado"
+		"Warning2B"	= "portadas, pero hay"
+		"Warning2C"	= "juegos seleccionados. ¿Quieres continuar?"
+		"Warning1A" 	= "Advertencia: has seleccionado solo una portada, pero hay"
+		"Warning1B" 	= "juegos seleccionados. ¿Quieres continuar?"
+
+		
 	}
 	"de" = @{
-        "noSavedCover"  = "Keine gespeicherte Cover gefunden für: "
-        "noSavedCovers" = "Keine gespeicherten Cover gefunden für: "
-        "SaveOriginal"  = "Möchten Sie das ausgewählte Cover speichern?"
-        "SaveOriginals" = "Möchten Sie die ausgewählten Cover speichern?"
+        	"noSavedCover"  = "Keine gespeicherte Cover gefunden für: "
+       		"noSavedCovers" = "Keine gespeicherten Cover gefunden für: "
+        	"SaveOriginal"  = "Möchten Sie das ausgewählte Cover speichern?"
+        	"SaveOriginals" = "Möchten Sie die ausgewählten Cover speichern?"
+		"Warning2A"	= "Achtung: Sie haben"
+		"Warning2B"	= "Cover ausgewählt, aber es sind nur"
+		"Warning2C"	= "Spiele ausgewählt. Möchten Sie fortfahren?"
+		"Warning1A"     = "Achtung: Sie haben nur ein Cover ausgewählt, aber es sind"
+		"Warning1B"	= "Spiele ausgewählt. Möchten Sie fortfahren?"
+
     }
  }
  
- $currentLanguage= "it"
+ #$global:currentLanguage= "it"
  
-  if (!$messages.ContainsKey($currentLanguage)) {
-	 $currentLanguage= "en" 
-  }
-  
+ if ($global:messages.ContainsKey($global:currentLanguage)){
+	
+	 }else{$global:currentLanguage= "en" }
+
+ 
   
   
 
@@ -53,8 +85,9 @@ function backup_slot()
 	param(
 		$getGameMenuItemsArgs
 	)
-
-
+$coverPath=$global:coverPath	
+$currentLanguage=$global:currentLanguage
+$messages=$global:messages
 
 $go="true"
 $Gameselcount = $PlayniteApi.MainView.SelectedGames
@@ -77,7 +110,7 @@ foreach ($Game in $Gamesel) {
 $u=$null
 $cc=$null
 
-#$coverPath= "c:\aaprove\"
+
 
 
 
@@ -155,7 +188,9 @@ function load_slot()
 	param(
 		$getGameMenuItemsArgs
 	)
-
+$coverPath=$global:coverPath
+$currentLanguage=$global:currentLanguage
+$messages=$global:messages
 
 $nocovergames=@()	
 	
@@ -344,6 +379,9 @@ function coverchange()
 		$getGameMenuItemsArgs
 	)
 	
+$currentLanguage=$global:currentLanguage
+$messages=$global:messages
+
 $Gamesel = $PlayniteApi.MainView.SelectedGames
 $orderedGames = $Gamesel | Sort-Object -Property Name
 
@@ -354,7 +392,8 @@ $u=$null
 $cc=$null
 
 $gamed = $PlayniteApi.Database.Games[$game.id]
-$u=$PlayniteApi.Dialogs.SelectImageFile()
+#$u=$PlayniteApi.Dialogs.SelectImageFile()
+$u=$PlayniteApi.Dialogs.SelectFiles("Image files (jpg, png, bmp, webp|*.jpg;*.png;*.bmp;*.webp;*)")
 
 
 
@@ -375,6 +414,68 @@ if ($cc -ne $null) {
 } #endfunc
 
 
+
+
+
+
+function coverchange2()
+{
+	param(
+		$getGameMenuItemsArgs
+	)
+	
+$currentLanguage=$global:currentLanguage
+$messages=$global:messages
+
+$Gamesel = $PlayniteApi.MainView.SelectedGames
+$orderedGames = $Gamesel | Sort-Object -Property Name
+
+$warn=""
+$wargo="true"
+
+#$u=$PlayniteApi.Dialogs.SelectFiles("Image files (*.jpg, *.png, *.bmp|*.jpg;*.png;*.bmp")
+$u=$PlayniteApi.Dialogs.SelectFiles("Image files (jpg, png, bmp, webp|*.jpg;*.png;*.bmp;*.webp;*)")
+
+
+
+if (($u.count -lt $Gamesel.count) -and ($u.count -eq 1)){$warn = $PlayniteApi.Dialogs.ShowMessage("$($messages[$currentLanguage]['Warning1A']) $($Gamesel.Count) $($messages[$currentLanguage]['Warning1B'])", "MyMessage",[System.Windows.MessageBoxButton]::YesNo)}
+if (($u.count -ne $Gamesel.count) -and ($u.count -gt 1)) {$warn = $PlayniteApi.Dialogs.ShowMessage("$($messages[$currentLanguage]['Warning2A']) $($u.Count) $($messages[$currentLanguage]['Warning2B']) $($Gamesel.Count) $($messages[$currentLanguage]['Warning2C'])", "MyMessage",[System.Windows.MessageBoxButton]::YesNo)}
+if ($warn -eq "Yes"){ $wargo="true"}elseif($warn -eq "No"){$wargo="false"}
+
+
+
+
+
+if ($wargo -eq "true"){
+
+#>
+
+$i=0
+#foreach ($Game in $Gamesel) { 
+foreach ($Game in $orderedGames) { 
+
+#$u=$null
+#$cc=$null
+
+$gamed = $PlayniteApi.Database.Games[$game.id]
+
+
+if (!([string]::IsNullOrWhiteSpace($u)) -and ($i -lt $u.count)) { $cc = $PlayniteApi.Database.AddFile($u[$i], $gamed.Id)#}
+if ($cc -ne $null) {
+	
+	$PlayniteApi.Database.RemoveFile($gamed.coverImage)
+	$gamed.CoverImage = $cc                            
+	$PlayniteApi.Database.Games.Update($gamed)   
+
+	}
+$i+=1
+
+}#endif
+}#foreach
+
+}#wargo
+
+} #endfunc
 
 
 
@@ -483,9 +584,9 @@ function getGameMenuItems{
 	)
 
 
- $currentLanguage=(Get-Culture).Name
+ $currentLang=(Get-Culture).Name
  
- $itemstrings = @{
+ $global:itemstrings = @{
 	"en" = @{
 		"Change manually"  = "Change with Explorer"
 		"Load" 			   = "Load" 
@@ -528,17 +629,19 @@ function getGameMenuItems{
     }
  }
  
-  if (!$itemstrings.ContainsKey($currentLanguage)) {
-	 $currentLanguage="en" 
+  #$currentLang="it"
+ 
+  if (!$itemstrings.ContainsKey($currentLang)) {
+	 $currentLang="en" 
   }
- #$currentLanguage="it"
 
-$save=$itemstrings[$currentLanguage]["Save"]
-$load=$itemstrings[$currentLanguage]["Load"]
-$original=$itemstrings[$currentLanguage]["Original"]
-$originals=$itemstrings[$currentLanguage]["Originals"]
-$changemanually=$itemstrings[$currentLanguage]["Change manually"]
-#$changemanually2=$changemanually=$itemstrings[$currentLanguage]["Change manually2"]
+
+$save=$itemstrings[$currentLang]["Save"]
+$load=$itemstrings[$currentLang]["Load"]
+$original=$itemstrings[$currentLang]["Original"]
+$originals=$itemstrings[$currentLang]["Originals"]
+$changemanually=$itemstrings[$currentLang]["Change manually"]
+$changemanually2=$itemstrings[$currentLang]["Change manually2"]
  
 
 	
@@ -624,17 +727,19 @@ $changemanually=$itemstrings[$currentLanguage]["Change manually"]
 	$menuItemC.MenuSection = "Cover Style Switcher"
 	$menuItemC.Icon = "$PSScriptRoot"+"\icon1.png"
 	
-	#$menuItemD = New-Object Playnite.SDK.Plugins.ScriptGameMenuItem
-	#$menuItemD.Description = $changemanually2
-    #$menuItemD.FunctionName = "coverchange2"
-	#$menuItemD.MenuSection = "Cover Style Switcher"
-	#$menuItemD.Icon = "$PSScriptRoot"+"\icon1.png"
+	
+	$menuItemD = New-Object Playnite.SDK.Plugins.ScriptGameMenuItem
+	$menuItemD.Description = $changemanually2
+    $menuItemD.FunctionName = "coverchange2"
+	$menuItemD.MenuSection = "Cover Style Switcher"
+	$menuItemD.Icon = "$PSScriptRoot"+"\icon1.png"
+	#>
 	
 	
 
 
     
-    return $menuItemB0,$menuItemB1,$menuItemB2,$menuItemB3,$menuItemB4,$menuItemB5,$menuItemL0,$menuItemL1,$menuItemL2,$menuItemL3,$menuItemL4,$menuItemL5,$menuItemC #,$menuItemD
+    return $menuItemB0,$menuItemB1,$menuItemB2,$menuItemB3,$menuItemB4,$menuItemB5,$menuItemL0,$menuItemL1,$menuItemL2,$menuItemL3,$menuItemL4,$menuItemL5,$menuItemC,$menuItemD
 
 
 
