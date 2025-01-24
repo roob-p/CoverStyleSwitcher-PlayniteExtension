@@ -27,17 +27,17 @@ If you enjoy the extension, you can buy me a coffee. It will be very appreciated
 <table style="width: 100%; text-align: left;">
   <tr>
     <td style="padding: 0; vertical-align: top;">
-      <img src="https://github.com/roob-p/CoverStyleSwitcher-PlayniteExtension/blob/main/media/1.gif" style="width: 100%; height: auto;" />
+      <img src="https://raw.githubusercontent.com/roob-p/CoverStyleSwitcher-PlayniteExtension/blob/main/media/1.gif" style="width: 100%; height: auto;" />
     </td>
   </tr>
   <tr>
     <td style="padding: 0; vertical-align: top;">
-      <img src="https://github.com/roob-p/CoverStyleSwitcher-PlayniteExtension/blob/main/media/3.gif" style="width: 100%; height: auto;" />
+      <img src="https://raw.githubusercontent.com/roob-p/CoverStyleSwitcher-PlayniteExtension/blob/main/media/3.gif" style="width: 100%; height: auto;" />
     </td>
   </tr>
    <tr>
     <td style="padding: 0; vertical-align: top;">
-      <img src="https://github.com/roob-p/CoverStyleSwitcher-PlayniteExtension/blob/main/media/2.gif" style="width: 100%; height: auto;" />
+      <img src="https://raw.githubusercontent.com/roob-p/CoverStyleSwitcher-PlayniteExtension/blob/main/media/2.gif" style="width: 100%; height: auto;" />
          </td>
   </tr>
 </table>
