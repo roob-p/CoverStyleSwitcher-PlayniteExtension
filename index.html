@@ -3,50 +3,44 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Playnite Extensions</title>
-    <link rel="stylesheet" href="style.css">
+    <title>CoverStyleSwitcher Playnite Extension</title>
+    <link rel="stylesheet" href="style.css"> <!-- Aggiungi il tuo CSS se necessario -->
+    <script src="https://cdn.jsdelivr.net/npm/marked@4.0.12/lib/marked.min.js"></script> <!-- Marked.js per il rendering del Markdown -->
 </head>
 <body>
     <header>
-        <h1>Benvenuto nel mio sito!</h1>
+        <h1>CoverStyleSwitcher Playnite Extension</h1>
     </header>
+
     <main>
-        <!-- Qui caricheremo il README.md (non necessario se non vuoi personalizzare troppo) -->
-        <section>
-            <h2>Releases</h2>
-            <p>Qui puoi scaricare le versioni più recenti delle mie estensioni:</p>
-            <ul>
-                <li>
-                    <strong>AutoCategories Playnite Extension</strong> 
-                    - <a href="https://github.com/roob-p/AutoCategories-PlayniteExtension/releases/download/v1.0/AutoCategories-PlayniteExtension.zip" download>Scarica v1.0</a>
-                </li>
-                <li>
-                    <strong>CoverStyleSwitcher Playnite Extension</strong> 
-                    - <a href="https://github.com/roob-p/CoverStyleSwitcher-PlayniteExtension/releases/download/v1.0/CoverStyleSwitcher-PlayniteExtension.zip" download>Scarica v1.0</a>
-                </li>
-            </ul>
+        <!-- Sezione per il README -->
+        <section id="readme-section">
+            <h2>README</h2>
+            <div id="readme-content">Caricamento del README...</div>
         </section>
 
-        <!-- Qui puoi includere una parte per visualizzare il README.md, se lo vuoi caricare dinamicamente con JS -->
-        <section>
-            <h2>README</h2>
-            <div id="readme-content">Caricamento in corso...</div>
+        <!-- Sezione per le Releases -->
+        <section id="releases">
+            <h2>Releases</h2>
+            <p>Scarica la versione più recente dell'estensione:</p>
+            <ul>
+                <li><strong>CoverStyleSwitcher v1.0</strong> - <a href="https://github.com/roob-p/CoverStyleSwitcher-PlayniteExtension/releases/download/v1.0/CoverStyleSwitcher-PlayniteExtension.zip" download>Scarica v1.0</a></li>
+                <!-- Aggiungi altre versioni se necessario -->
+            </ul>
         </section>
     </main>
 
     <script>
-        // Funzione per caricare dinamicamente il README.md dalla tua repo
-        fetch('https://raw.githubusercontent.com/roob-p/AutoCategories-PlayniteExtension/main/README.md')
+        // Funzione per caricare il README.md da GitHub
+        fetch('https://raw.githubusercontent.com/roob-p/CoverStyleSwitcher-PlayniteExtension/main/README.md')
             .then(response => response.text())
             .then(data => {
-                // Mostra il contenuto del README convertito in HTML
+                // Converte il contenuto Markdown in HTML
                 document.getElementById('readme-content').innerHTML = marked(data);
             })
             .catch(error => {
                 document.getElementById('readme-content').innerHTML = "Impossibile caricare il README.";
             });
     </script>
-    <!-- Carica la libreria Marked.js per il rendering del markdown -->
-    <script src="https://cdn.jsdelivr.net/npm/marked@4.0.12/lib/marked.min.js"></script>
 </body>
 </html>
