@@ -23,6 +23,9 @@ If you enjoy the extension, you can buy me a coffee. It will be very appreciated
 
 [![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/E1E214R1KB)
 
+- Install directly:
+  [CoverStyleSwitcher](https://playnite.link/addons.html#CoverStyleSwitcher)
+
 
 <table style="width: 100%; text-align: left;">
   <tr>
