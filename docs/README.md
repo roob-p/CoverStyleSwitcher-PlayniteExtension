@@ -21,23 +21,22 @@ This extension lets you switch game covers and choose your preferred styles, sav
 
 If you enjoy the extension, you can buy me a coffee. It will be very appreciated ;)
 
-[![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/E1E214R1KB)
+[![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/E1E214R1KB)            
+
+- Github: [github.com/roop-p/CoverStyleSwitcher-PlayniteExtension](https://github.com/roob-p/CoverStyleSwitcher-PlayniteExtension/)
+- Download last version:
+[v1.0.4](https://github.com/roob-p/CoverStyleSwitcher-PlayniteExtension/releases/download/v1.04/CoverStyleSwitcher_v1.0.4.pext)
 
 
-<table style="width: 100%; text-align: left;">
-  <tr>
-    <td style="padding: 0; vertical-align: top;">
-      <img src="https://raw.githubusercontent.com/roob-p/CoverStyleSwitcher-PlayniteExtension/main/media/1.gif" style="width: 100%; height: auto;" />
-    </td>
-  </tr>
-  <tr>
-    <td style="padding: 0; vertical-align: top;">
-      <img src="https://raw.githubusercontent.com/roob-p/CoverStyleSwitcher-PlayniteExtension/blob/main/media/3.gif" style="width: 100%; height: auto;" />
-    </td>
-  </tr>
-   <tr>
-    <td style="padding: 0; vertical-align: top;">
-      <img src="https://raw.githubusercontent.com/roob-p/CoverStyleSwitcher-PlayniteExtension/blob/main/media/2.gif" style="width: 100%; height: auto;" />
-         </td>
-  </tr>
-</table>
+ 
+
+
+
+
+
+### Screenshots:
+
+| ![image1](https://raw.githubusercontent.com/roob-p/CoverStyleSwitcher-PlayniteExtension/main/media/1.gif) |
+|-----------------------------------------------------------|
+| ![image2](https://raw.githubusercontent.com/roob-p/CoverStyleSwitcher-PlayniteExtension/main/media/2.gif) |
+| ![image3](https://raw.githubusercontent.com/roob-p/CoverStyleSwitcher-PlayniteExtension/main/media/3.gif) |
