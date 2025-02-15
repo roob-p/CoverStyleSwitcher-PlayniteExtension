@@ -4,40 +4,41 @@ $global:coverPath= "c:\Cover Styles\"
 
 
  $global:currentLanguage=(Get-Culture).Name
+ if ($global:currentLanguage -match '-') { $global:currentLanguage = $global:currentLanguage.Split('-')[0]}
  
  $global:messages = @{
 	"en" = @{
-        	"noSavedCover"  = "No saved cover found for: "
+        "noSavedCover"  = "No saved cover found for: "
 		"noSavedCovers" = "No saved covers found for: "
 		"SaveOriginal"	= "Do you want to save the selected cover?"
 		"SaveOriginals" = "Do you want to save the selected covers?"
-		"Warning2A"	= "Warning: You have chosen"
-		"Warning2B"	= "covers while there are"
-		"Warning2C"	= "selected games. Do you want to continue?"
-		"Warning1A"	= "Warning: You have chosen only one cover while there are"
-		"Warning1B"	= "selected games. Do you want to continue?"
+		"Warning2A"		= "Warning: You have chosen"
+		"Warning2B"		= "covers while there are"
+		"Warning2C"		= "selected games. Do you want to continue?"
+		"Warning1A"	 	= "Warning: You have chosen only one cover while there are"
+		"Warning1B"	 	= "selected games. Do you want to continue?"
 
     }
     "it" = @{
 		"noSavedCover"  = "Non risultano cover salvate di: "
-       	        "noSavedCovers" = "Non risultano cover salvate di: "
+        "noSavedCovers" = "Non risultano cover salvate di: "
 		"SaveOriginal"  = "Vuoi salvare la cover selezionate?"
 		"SaveOriginals" = "Vuoi salvare le cover selezionate?"
-		"Warning2A"	= "Attenzione: Hai selezionato"
-		"Warning2B"	= "cover ma ci sono"
-		"Warning2C"	= "giochi selezionati. Vuoi continuare?"
+		"Warning2A"		= "Attenzione: Hai selezionato"
+		"Warning2B"		= "cover ma ci sono"
+		"Warning2C"		= "giochi selezionati. Vuoi continuare?"
 		"Warning1A" 	= "Attenzione: Hai selezionato solo una cover, ma ci sono"
-		"Warning1B"	= "giochi selezionati. Vuoi continuare?"
+		"Warning1B"	    = "giochi selezionati. Vuoi continuare?"
 
     }
 	"fr" = @{
-        	"noSavedCover"  = "Aucune couverture enregistrée pour: "
+        "noSavedCover"  = "Aucune couverture enregistrée pour: "
 		"noSavedCovers" = "Aucune couverture enregistrée pour: "
 		"SaveOriginal"  = "Voulez-vous sauvegarder les couverture sélectionnées ?"
 		"SaveOriginals" = "Voulez-vous sauvegarder les couvertures sélectionnées ?"
-		"Warning2A"	= "Attention : vous avez sélectionné"
-		"Warning2B"	= "couvertures, mais il y a"
-		"Warning2C"	= "jeux sélectionnés. Voulez-vous continuer ?"
+		"Warning2A"		= "Attention : vous avez sélectionné"
+		"Warning2B"		= "couvertures, mais il y a"
+		"Warning2C"		= "jeux sélectionnés. Voulez-vous continuer ?"
 		"Warning1A" 	= "Attention : vous avez sélectionné une seule couverture, mais il y a"
 		"Warning1B" 	= "jeux sélectionnés. Voulez-vous continuer?"
 
@@ -46,25 +47,25 @@ $global:coverPath= "c:\Cover Styles\"
 		"noSavedCover"  = "No se ha encontrado portada guardada para: "
 		"noSavedCovers" = "No se han encontrado portadas guardadas para: "
 		"SaveOriginal"  = "¿Deseas guardar la portada seleccionada?"
-        	"SaveOriginals" = "¿Deseas guardar las portadas seleccionadas?"
-		"Warning2A"	= "Advertencia: has seleccionado"
-		"Warning2B"	= "portadas, pero hay"
-		"Warning2C"	= "juegos seleccionados. ¿Quieres continuar?"
+        "SaveOriginals" = "¿Deseas guardar las portadas seleccionadas?"
+		"Warning2A"		= "Advertencia: has seleccionado"
+		"Warning2B"		= "portadas, pero hay"
+		"Warning2C"		= "juegos seleccionados. ¿Quieres continuar?"
 		"Warning1A" 	= "Advertencia: has seleccionado solo una portada, pero hay"
 		"Warning1B" 	= "juegos seleccionados. ¿Quieres continuar?"
 
 		
 	}
 	"de" = @{
-        	"noSavedCover"  = "Keine gespeicherte Cover gefunden für: "
-       		"noSavedCovers" = "Keine gespeicherten Cover gefunden für: "
-        	"SaveOriginal"  = "Möchten Sie das ausgewählte Cover speichern?"
-        	"SaveOriginals" = "Möchten Sie die ausgewählten Cover speichern?"
-		"Warning2A"	= "Achtung: Sie haben"
-		"Warning2B"	= "Cover ausgewählt, aber es sind nur"
-		"Warning2C"	= "Spiele ausgewählt. Möchten Sie fortfahren?"
+        "noSavedCover"  = "Keine gespeicherte Cover gefunden für: "
+        "noSavedCovers" = "Keine gespeicherten Cover gefunden für: "
+        "SaveOriginal"  = "Möchten Sie das ausgewählte Cover speichern?"
+        "SaveOriginals" = "Möchten Sie die ausgewählten Cover speichern?"
+		"Warning2A"		= "Achtung: Sie haben"
+		"Warning2B"		= "Cover ausgewählt, aber es sind nur"
+		"Warning2C"		= "Spiele ausgewählt. Möchten Sie fortfahren?"
 		"Warning1A"     = "Achtung: Sie haben nur ein Cover ausgewählt, aber es sind"
-		"Warning1B"	= "Spiele ausgewählt. Möchten Sie fortfahren?"
+		"Warning1B"	    = "Spiele ausgewählt. Möchten Sie fortfahren?"
 
     }
  }
@@ -125,41 +126,66 @@ $coverex=$PlayniteApi.Database.GetFullFilePath($game.coverImage)
 $estensione = [System.IO.Path]::GetExtension($coverex)
 
 if(!$game.source.name){
-
+	
+#backup gameid
+if (Test-Path "$coverPath\Backup\$slot\gameid\$plat\$($game.id)") { Remove-Item -Path "$coverPath\Backup\$slot\gameid\$plat\$($game.id)" -Force}       #new
+if (Test-Path "$coverPath\Backup\$slot\gameid\$plat\$($game.id).*") { Remove-Item -Path "$coverPath\Backup\$slot\gameid\$plat\$($game.id).*" -Force}   #new
 New-Item -Path "$coverPath" -Name "Backup\$slot\gameid\$plat\" -ItemType "directory" -force
 Copy-item $coverex "$coverPath\Backup\$slot\gameid\$plat\$($game.id)$estensione" -force
 
 if ($gamed -notmatch '[\/\:\*?"<>|]'){
 
 #backup nomegioco
+if (Test-Path "$coverPath\Backup\$slot\$plat\$game") { Remove-Item -Path "$coverPath\Backup\$slot\$plat\$game" -Force}     #new
+if (Test-Path "$coverPath\Backup\$slot\$plat\$game.*") { Remove-Item -Path "$coverPath\Backup\$slot\$plat\$game.*" -Force} #new
 New-Item -Path "$coverPath" -Name "Backup\$slot\$plat\" -ItemType "directory" -force
 Copy-Item $coverex "$coverPath\Backup\$slot\$plat\$game$estensione" -Force
 }
 else {
-	$oo="$game$estensione"
-	$oo = $oo -replace '[\/\:\*?"<>|]'
-	#$PlayniteApi.Dialogs.ShowMessage($oo)
+
+#backup specialcharacters
+	#$oo="$game$estensione"
+	#$oo = $oo -replace '[\/\:\*?"<>|]'
+	$oo="$game" 								#new
+	$oo = $oo -replace '[\/\:\*?"<>|]'			#new
+	if (Test-Path "$coverPath\Backup\$slot\special characters\$plat\$oo") { Remove-Item -Path "$coverPath\Backup\$slot\special characters\$plat\$oo" -Force}      #new
+	if (Test-Path "$coverPath\Backup\$slot\special characters\$plat\$oo.*") { Remove-Item -Path "$coverPath\Backup\$slot\special characters\$plat\$oo.*" -Force}  #new
 	New-Item -Path "$coverPath" -Name "Backup\$slot\special characters\$plat\" -ItemType "directory" -force
-	Copy-Item $coverex "$coverPath\Backup\$slot\special characters\$plat\$oo" -Force
+	#Copy-Item $coverex "$coverPath\Backup\$slot\special characters\$plat\$oo" -Force
+	Copy-Item $coverex "$coverPath\Backup\$slot\special characters\$plat\$oo$estensione" -Force
 }
 }#endif source
 else{  #C'è il source
-	
+
+if (Test-Path "$coverPath\Backup\$slot\gameid\$source\$($game.id)") { Remove-Item -Path "$coverPath\Backup\$slot\gameid\$source\$($game.id)" -Force}       #new
+if (Test-Path "$coverPath\Backup\$slot\gameid\$source\$($game.id).*") { Remove-Item -Path "$coverPath\Backup\$slot\gameid\$source\$($game.id).*" -Force}   #new	
 New-Item -Path "$coverPath" -Name "Backup\$slot\gameid\$source\" -ItemType "directory" -force
 Copy-item $coverex "$coverPath\Backup\$slot\gameid\$source\$($game.id)$estensione" -force
 
 if ($gamed -notmatch '[\/\:\*?"<>|]'){
 
 #backup nomegioco
+
+#Remove-Item -Path "$coverPath\Backup\$slot\$source\$game" -Force -ErrorAction SilentlyContinue  #alternativa
+#Remove-Item -Path "$coverPath\Backup\$slot\$source\$game.*" -Force -ErrorAction SilentlyContinue  #alternativa
+
+if (Test-Path "$coverPath\Backup\$slot\$source\$game") { Remove-Item -Path "$coverPath\Backup\$slot\$source\$game" -Force}
+if (Test-Path "$coverPath\Backup\$slot\$source\$game.*") { Remove-Item -Path "$coverPath\Backup\$slot\$source\$game.*" -Force}
 New-Item -Path "$coverPath" -Name "Backup\$slot\$source\" -ItemType "directory" -force
 Copy-Item $coverex "$coverPath\Backup\$slot\$source\$game$estensione" -Force
 }
 else {
-	$oo="$game$estensione"
-	$oo = $oo -replace '[\/\:\*?"<>|]'
-	#$PlayniteApi.Dialogs.ShowMessage($oo)
+
+#backup specialcharacters	
+	#$oo="$game$estensione"
+	#$oo = $oo -replace '[\/\:\*?"<>|]'
+	$oo="$game" 								#new
+	$oo = $oo -replace '[\/\:\*?"<>|]'			#new
+	if (Test-Path "$coverPath\Backup\$slot\special characters\$source\$oo") { Remove-Item -Path "$coverPath\Backup\$slot\special characters\$source\$oo" -Force}				#new
+	if (Test-Path "$coverPath\Backup\$slot\special characters\$source\$oo.*") { Remove-Item -Path "$coverPath\Backup\$slot\special characters\$source\$oo.*" -Force}			#new
 	New-Item -Path "$coverPath" -Name "Backup\$slot\special characters\$source\" -ItemType "directory" -force
-	Copy-Item $coverex "$coverPath\Backup\$slot\special characters\$source\$oo" -Force
+	#Copy-Item $coverex "$coverPath\Backup\$slot\special characters\$source\$oo" -Force
+	Copy-Item $coverex "$coverPath\Backup\$slot\special characters\$source\$oo$estensione" -Force	#new
 }	
 	
 	
@@ -585,6 +611,7 @@ function getGameMenuItems{
 
 
  $currentLang=(Get-Culture).Name
+ if ($currentLang -match '-') { $currentLang = $currentLang.Split('-')[0]}
  
  $global:itemstrings = @{
 	"en" = @{
