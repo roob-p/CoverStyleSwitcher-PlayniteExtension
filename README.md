@@ -26,7 +26,7 @@ If you enjoy the extension, you can buy me a coffee. It will be very appreciated
 - Install directly:
   [CoverStyleSwitcher](https://playnite.link/addons.html#CoverStyleSwitcher)
 - Download last version:
-[v1.0.4](https://github.com/roob-p/CoverStyleSwitcher-PlayniteExtension/releases/download/v1.04/CoverStyleSwitcher_v1.0.4.pext)
+[v1.0.5]( https://github.com/roob-p/CoverStyleSwitcher-PlayniteExtension/releases/download/v1.0.5/CoverStyleSwitcher_v1.0.5.pext)
 
 
 <table style="width: 100%; text-align: left;">
