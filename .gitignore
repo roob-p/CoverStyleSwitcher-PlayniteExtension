@@ -5,3 +5,4 @@ media/thumbs/*.gif
 media/thumbs/*.png
 media/thumbs/*.jpg
 manifest.yaml
+docs/*.*
