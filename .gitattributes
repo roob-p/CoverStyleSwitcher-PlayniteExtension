@@ -1,0 +1,7 @@
+media/*.gif export-ignore
+media/*.jpg export-ignore
+media/thumbs/*.gif export-ignore
+media/thumbs/*.jpg export-ignore
+google17cdfd62ccaf7043.html export-ignore
+.gitignore export-ignore
+.github/*.* export-ignore
