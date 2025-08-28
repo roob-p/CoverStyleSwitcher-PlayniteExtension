@@ -1,7 +1,7 @@
 ﻿Id: CoverStyleSwitcher
 Name: Cover Style Switcher
 Author: roob-p
-Version: 1.0.5
+Version: 1.0.6
 Module: CoverStyleSwitcher.psm1
 Type: Script
 Icon: icon1.png
@@ -10,3 +10,4 @@ Links:
       Url: https://github.com/roob-p/CoverStyleSwitcher-PlayniteExtension
     - Name: Donate (Ko-fi)
       Url: https://ko-fi.com/roobp
+
