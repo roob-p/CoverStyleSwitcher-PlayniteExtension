@@ -7,5 +7,8 @@ google17cdfd62ccaf7043.html export-ignore
 .github/*.* export-ignore
 media/ export-ignore
 docs/ export-ignore
+docs/*.*
 .github/ export-ignore
 .gitattributes export-ignore
+manifest.yaml export-ignore
+extension.yaml export-ignore
