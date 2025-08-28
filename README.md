@@ -17,6 +17,7 @@
 - You can copy any downloaded covers to the folder structure.
 - You can also manually choose a cover via Windows Explorer using the "change with Explorer" function.
 - You can select multiple images at once with "change with Explorer (batch)" function. The Standard "change with Explorer" can be useful if you have covers stored in different places, otherwise, the batch function should be ideal.
+- Select `Open metadata folder` to open the game's images folder.
 - `C:\Cover Styles` is the default path where covers will be placed. Edit `$global:coverPath` in CoverStyleSwitcher.psm1 as you like.
 
 If you enjoy the extension, you can buy me a coffee. It will be very appreciated ;)
@@ -26,7 +27,7 @@ If you enjoy the extension, you can buy me a coffee. It will be very appreciated
 - Install directly:
   [CoverStyleSwitcher](https://playnite.link/addons.html#CoverStyleSwitcher)
 - Download last version:
-[v1.0.5]( https://github.com/roob-p/CoverStyleSwitcher-PlayniteExtension/releases/download/v1.0.5/CoverStyleSwitcher_v1.0.5.pext)
+[v1.0.6]( https://github.com/roob-p/CoverStyleSwitcher-PlayniteExtension/releases/download/v1.0.6/CoverStyleSwitcher_v1.0.6.pext)
 
 
 <table style="width: 100%; text-align: left;">
