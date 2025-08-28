@@ -12,3 +12,4 @@ docs/*.*
 .gitattributes export-ignore
 manifest.yaml export-ignore
 extension.yaml export-ignore
+readme.md export-ignore
