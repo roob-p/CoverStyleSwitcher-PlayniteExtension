@@ -602,6 +602,27 @@ function load_slot5() {
 }
 
 
+function metadatafolder()
+{
+		param(
+		$getGameMenuItemsArgs
+	)
+	
+$Gamesel = $PlayniteApi.MainView.SelectedGames
+$orderedGames = $Gamesel | Sort-Object -Property Name
+
+foreach ($Game in $orderedGames) { 	
+
+	$path = "$($PlayniteApi.Database.DatabasePath)\Files\$($game.Id)"
+	if (test-path $path) {start-process $path}
+	
+
+}#foreach
+	
+}
+
+
+
 
 function getGameMenuItems{
 	
@@ -621,6 +642,7 @@ function getGameMenuItems{
 		"Original"		   = "Originale"
 		"Originals"		   = "Originali"
 		"Change manually2" = "Change with Explorer (batch)"
+		"Open metadata"    = "Open metadata folder"
     }
     "it" = @{
 		"Change manually"  = "Cambia con Explorer"
@@ -629,6 +651,7 @@ function getGameMenuItems{
 		"Original"		   = "Original"
 		"Originals"        = "Originals" 
 		"Change manually2" = "Cambia con Explorer (batch)"
+		"Open metadata"    = "Apri cartella metadata"
     }
 	"fr" = @{
 		"Change manually"  = "Changer avec l'Explorateur"
@@ -637,6 +660,7 @@ function getGameMenuItems{
 		"Original"         = "Original"
 		"Originals"        = "Originaux" 
 		"Change manually2" = "Changer avec l'Explorateur (par lot)"
+		"Open metadata"	   = "Changer la couverture"
     }
 	"es" = @{
 		"Change manually"  = "Cambiar con Explorador"
@@ -645,6 +669,7 @@ function getGameMenuItems{
 		"Original"         = "Original"  
 		"Originals"        = "Originales" 
 		"Change manually2" = "Cambiar con el Explorador (por lotes)"
+		"Open metadata"	   = "Cambiar portada"
 	}
 	 "de" = @{
 		"Change manually"  = "Mit dem Explorer" 
@@ -652,7 +677,8 @@ function getGameMenuItems{
         "Save"    	       = "Speichern"
         "Original"         = "Original"
 		"Originals"        = "Originale" 	
-		"Change manually2" = "Mit dem Explorer ändern (Stapel)"		
+		"Change manually2" = "Mit dem Explorer ändern (Stapel)"	
+		"Open metadata"	   = "Cover ändern"		
     }
  }
  
@@ -661,6 +687,10 @@ function getGameMenuItems{
   if (!$itemstrings.ContainsKey($currentLang)) {
 	 $currentLang="en" 
   }
+  
+  
+ 
+  
 
 
 $save=$itemstrings[$currentLang]["Save"]
@@ -669,6 +699,7 @@ $original=$itemstrings[$currentLang]["Original"]
 $originals=$itemstrings[$currentLang]["Originals"]
 $changemanually=$itemstrings[$currentLang]["Change manually"]
 $changemanually2=$itemstrings[$currentLang]["Change manually2"]
+$openmetadata=$itemstrings[$currentLang]["Open metadata"]
  
 
 	
@@ -761,12 +792,16 @@ $changemanually2=$itemstrings[$currentLang]["Change manually2"]
 	$menuItemD.MenuSection = "Cover Style Switcher"
 	$menuItemD.Icon = "$PSScriptRoot"+"\icon1.png"
 	#>
-	
+	$menuItemO = New-Object Playnite.SDK.Plugins.ScriptGameMenuItem
+	$menuItemO.Description = $openmetadata
+    $menuItemO.FunctionName = "metadatafolder"
+	$menuItemO.MenuSection = "Cover Style Switcher"
+	$menuItemO.Icon = "$PSScriptRoot"+"\icon2.png"
 	
 
 
     
-    return $menuItemB0,$menuItemB1,$menuItemB2,$menuItemB3,$menuItemB4,$menuItemB5,$menuItemL0,$menuItemL1,$menuItemL2,$menuItemL3,$menuItemL4,$menuItemL5,$menuItemC,$menuItemD
+    return $menuItemB0,$menuItemB1,$menuItemB2,$menuItemB3,$menuItemB4,$menuItemB5,$menuItemL0,$menuItemL1,$menuItemL2,$menuItemL3,$menuItemL4,$menuItemL5,$menuItemC,$menuItemD,$menuItemO
 
 
 
