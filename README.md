@@ -2,6 +2,8 @@
 
 ✨ This extension lets you switch game covers and choose your preferred styles, saving and loading multiple game's cover in different slots. If you want to try different cover styles, this extension is for you! It's also useful for backing up and organizing your covers.
 
+![GitHub Downloads](https://img.shields.io/github/downloads/roob-p/CoverStyleSwitcher-PlayniteExtension/total)
+
 ## 🌟 Features
 - You can save and load multiple game's cover in different slots.
 - Covers are saved as follows:
@@ -29,8 +31,6 @@ If you enjoy the extension, you can buy me a coffee. It will be very appreciated
   [CoverStyleSwitcher](https://playnite.link/addons.html#CoverStyleSwitcher)
 - Download last version:
 [v1.0.6]( https://github.com/roob-p/CoverStyleSwitcher-PlayniteExtension/releases/download/v1.0.6/CoverStyleSwitcher_v1.0.6.pext)
-
-![GitHub Downloads](https://img.shields.io/github/downloads/roob-p/CoverStyleSwitcher-PlayniteExtension/total)
 
 
 <table style="width: 100%; text-align: left;">
