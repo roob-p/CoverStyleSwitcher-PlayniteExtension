@@ -29,10 +29,11 @@ If you enjoy the extension, you can buy me a coffee. It will be very appreciated
 [![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/E1E214R1KB)     
 
 - 🐙 Github repo: [roop-p/CoverStyleSwitcher-PlayniteExtension](https://github.com/roob-p/CoverStyleSwitcher-PlayniteExtension/)
-- 📥 Download last version:
-[v1.0.6]( https://github.com/roob-p/CoverStyleSwitcher-PlayniteExtension/releases/download/v1.0.6/CoverStyleSwitcher_v1.0.6.pext)
 - 🧩 Install directly:
   [CoverStyleSwitcher](https://playnite.link/addons.html#CoverStyleSwitcher)
+- 📥 Download last version:
+[v1.0.6]( https://github.com/roob-p/CoverStyleSwitcher-PlayniteExtension/releases/download/v1.0.6/CoverStyleSwitcher_v1.0.6.pext)
+
 
  
 
